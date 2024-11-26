@@ -168,8 +168,8 @@ public class SecurityConfig {
         return http
                 .csrf(csrf -> csrf.disable())
                 .authorizeRequests(auth -> auth
-                        .antMatchers("/auth/register", "/auth/login").permitAll()
-                        .antMatchers("/api/protected").authenticated()
+                        .antMatchers("/usuarios/register", "/usuarios/login").permitAll()
+                        .antMatchers("/ruta_protegida").authenticated()
                         .anyRequest().authenticated()
                 )
                 .oauth2ResourceServer(oauth2 -> oauth2.jwt())
@@ -219,7 +219,7 @@ Controla el registro y el inicio de sesión de usuarios.
 ### Código:
 ```java
 @RestController
-@RequestMapping("/auth")
+@RequestMapping("/usuarios")
 public class UserController {
 
     private final CustomUserDetailsService userDetailsService;
